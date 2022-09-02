@@ -1,6 +1,6 @@
 const Creator = (): JSX.Element => {
   return (
-    <div className='border w-2/3'>
+    <div className='w-1/2'>
       Creator
     </div>
   )
