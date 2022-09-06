@@ -1,11 +1,13 @@
+import { useState } from 'react'
 import Creator from '../components/creator'
 import Preview from '../components/preview'
 
 const Create = (): JSX.Element => {
+  const [values, setValues] = useState({})
   return (
     <div className='flex'>
-      <Creator/>
-      <Preview/>
+      <Creator setValues={setValues}/>
+      <Preview values={values}/>
     </div>
   )
 }
