@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
+    'eslint:recommended',
     'standard-with-typescript'
   ],
   overrides: [
@@ -12,12 +13,17 @@ module.exports = {
   parserOptions: {
     project: ['tsconfig.json'],
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
   },
   plugins: [
     'react'
   ],
   rules: {
-    'react/react-in-jsx-scope': 'off'
+    'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'react/jsx-indent': ['error', 2]
   }
 }
