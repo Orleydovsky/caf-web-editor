@@ -1,58 +1,59 @@
-import { Formik, Form, useField, useFormikContext } from 'formik'
-import { useEffect } from 'react'
+import { Formik, Form, useFormikContext } from 'formik'
+import { Dispatch, SetStateAction, useEffect } from 'react'
 import * as yup from 'yup'
+import TextInput from './text-input'
+import TextArea from './textarea-input'
 
-const TextInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props)
-  return (
-    <div className='flex flex-col text-lg mb-2'>
-      <label htmlFor={(Boolean(props.id)) || props.name}>{label}</label>
-      <input className='border-4 rounded-lg py-1 mt-2 px-2 outline-none' {...field} {...props} />
-      {(Boolean(meta.touched)) && (Boolean(meta.error))
-        ? (
-        <div className='text-red-600 text-sm'>{meta.error}</div>
-          )
-        : null}
-    </div>
-  )
-}
-
-const TextArea = ({ label, ...props }) => {
-  const [field, meta] = useField(props)
-  return (
-    <div className='flex flex-col text-lg mb-2'>
-      <label htmlFor={(Boolean(props.id)) || props.name}>{label}</label>
-      <textarea className='border-4 rounded-lg py-1 mt-2 px-2 outline-none' {...field} {...props}></textarea>
-      {(Boolean(meta.touched)) && (Boolean(meta.error))
-        ? (
-        <div className='text-red-600 text-sm'>{meta.error}</div>
-          )
-        : null}
-    </div>
-  )
-}
-
-const FormObserver = ({ setValues }) => {
-  const { values } = useFormikContext()
-  useEffect(() => {
-    setValues(values)
-  }, [values])
+const FormObserver = ({ setValues }: {setValues: Dispatch<SetStateAction<Values>>}) => {
+  const { values } = useFormikContext<Values>()
+  useEffect(() => setValues(values), [values])
   return null
 }
 
-const Creator = ({ setValues }): JSX.Element => {
+export interface Values {
+  title: string
+  serie: string
+  topic: number
+  quote: string
+  introduction: string
+  extra: string
+  sectionOneTitle: string
+  sectionOneQuote: string
+  sectionOneContent: string
+  sectionTwoTitle: string
+  sectionTwoQuote: string
+  sectionTwoContent: string
+  sectionThreeTitle: string
+  sectionThreeQuote: string
+  sectionThreeContent: string
+  conclusion: string
+}
+
+export const initialValues: Values = {
+  title: '',
+  serie: '',
+  topic: Number(''),
+  quote: '',
+  introduction: '',
+  extra: '',
+  sectionOneTitle: '',
+  sectionOneQuote: '',
+  sectionOneContent: '',
+  sectionTwoTitle: '',
+  sectionTwoQuote: '',
+  sectionTwoContent: '',
+  sectionThreeTitle: '',
+  sectionThreeQuote: '',
+  sectionThreeContent: '',
+  conclusion: ''
+}
+
+const Creator = ({ setValues }: {setValues: Dispatch<SetStateAction<Values>>}) => {
   return (
     <div className='w-1/2 flex justify-end'>
       <div className='w-96'>
-       <Formik
-         initialValues={{
-           title: '',
-           serie: '',
-           topic: '',
-           quote: '',
-           introduction: '',
-           extra: ''
-         }}
+        <Formik
+         initialValues={{ initialValues }}
          validationSchema={yup.object({
            title: yup.string().required('Se requiere un título'),
            serie: yup.string().required('Especificar la serie'),
@@ -79,58 +80,58 @@ const Creator = ({ setValues }): JSX.Element => {
          }}
        >
           <Form>
-          <FormObserver setValues={setValues} />
-          <div className='screen'>
-            <h1 className='text-3xl font-semibold font-nunito mb-5'>Portada</h1>
-            <TextInput
+            <FormObserver setValues={setValues} />
+            <div className='screen'>
+              <h1 className='text-3xl font-semibold font-nunito mb-5'>Portada</h1>
+              <TextInput
               label='Título:'
               name='title'
               type='text'
               placeholder='¿Quién tiene sed?'
             />
-            <TextInput
+              <TextInput
               label='Serie:'
               name='serie'
               type='text'
               placeholder='Pasión por Dios'
             />
-            <TextInput
+              <TextInput
               label='Tema:'
               name='topic'
               type='number'
-              placeholder='1, 2, ...7'
+              placeholder='1, 2, 3, ...7'
             />
-            <TextInput
+              <TextInput
               label='Cita'
               name='quote'
               type='text'
               placeholder='Habacuc 3:1-4'
             />
-            <button type='submit'>Publicar</button>
-          </div>
-          <div className='screen'>
-            <TextArea
+              <button type='submit'>Publicar</button>
+            </div>
+            <div className='screen'>
+              <TextArea
               label='Introducción:'
               name='introduction'
               placeholder='¿Quién tiene sed?'
             />
-          </div>
-          <div className='screen'>
-            <TextArea
+            </div>
+            <div className='screen'>
+              <TextArea
               label='Extra para el guía de familia:'
               name='extra'
               placeholder='¿Cómo provocamos un avivamiento en casa?'
             />
-          </div>
-          <div className='screen'>
-            <h1 className='font-nunito text-xl font-bold'>Extra | sección 1</h1>
-            <TextInput
+            </div>
+            <div className='screen'>
+              <h1 className='font-nunito text-xl font-bold'>Extra | sección 1</h1>
+              <TextInput
               label='Título:'
               name='sectionOneTitle'
               type='text'
               placeholder='Título sección 1'
               />
-            <TextInput
+              <TextInput
               label='Texto relevante:'
               name='sectionOneQuote'
               type='text'
@@ -141,16 +142,16 @@ const Creator = ({ setValues }): JSX.Element => {
                 name='sectionOneContent'
                 placeholder='Contenido'
               />
-          </div>
-          <div className='screen'>
-            <h1 className='font-nunito text-xl font-bold'>Extra | Sección 2</h1>
-            <TextInput
+            </div>
+            <div className='screen'>
+              <h1 className='font-nunito text-xl font-bold'>Extra | Sección 2</h1>
+              <TextInput
               label='Título:'
               name='sectionTwoTitle'
               type='text'
               placeholder='Título sección 2'
               />
-            <TextInput
+              <TextInput
               label='Texto relevante:'
               name='sectionTwoQuote'
               type='text'
@@ -161,16 +162,16 @@ const Creator = ({ setValues }): JSX.Element => {
                 name='sectionTwoContent'
                 placeholder='Contenido'
               />
-          </div>
-          <div className='screen'>
-            <h1 className='font-nunito text-xl font-bold'>Extra | Sección 3</h1>
-            <TextInput
+            </div>
+            <div className='screen'>
+              <h1 className='font-nunito text-xl font-bold'>Extra | Sección 3</h1>
+              <TextInput
               label='Título:'
               name='sectionThreeTitle'
               type='text'
               placeholder='Título sección 3'
               />
-            <TextInput
+              <TextInput
               label='Texto relevante:'
               name='sectionThreeQuote'
               type='text'
@@ -181,16 +182,16 @@ const Creator = ({ setValues }): JSX.Element => {
                 name='sectionThreeContent'
                 placeholder='Contenido'
               />
-          </div>
-          <div className='screen'>
-            <TextArea
+            </div>
+            <div className='screen'>
+              <TextArea
               label='Conclusión'
               name='conclusion'
               placeholder='Conclusión'
             />
-          </div>
-         </Form>
-       </Formik>
+            </div>
+          </Form>
+        </Formik>
       </div>
     </div>
   )
