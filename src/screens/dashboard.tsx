@@ -1,6 +1,6 @@
-import History from './history'
+import History from '../features/dashboard/history'
 
-const Dashboard = (): JSX.Element => {
+const Dashboard = () => {
   return (
     <History/>
   )
