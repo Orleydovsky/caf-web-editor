@@ -50,7 +50,7 @@ export const initialValues: Values = {
 
 const Creator = ({ setValues }: {setValues: Dispatch<SetStateAction<Values>>}) => {
   return (
-    <div className='w-1/2 flex justify-end'>
+    <div className='w-1/2 flex justify-end px-2'>
       <div className='w-96'>
         <Formik
          initialValues={{ initialValues }}
@@ -82,7 +82,7 @@ const Creator = ({ setValues }: {setValues: Dispatch<SetStateAction<Values>>}) =
           <Form>
             <FormObserver setValues={setValues} />
             <div className='screen'>
-              <h1 className='text-3xl font-semibold font-nunito mb-5'>Portada</h1>
+              <h1 className='header'>Portada</h1>
               <TextInput
               label='Título:'
               name='title'
@@ -102,29 +102,31 @@ const Creator = ({ setValues }: {setValues: Dispatch<SetStateAction<Values>>}) =
               placeholder='1, 2, 3, ...7'
             />
               <TextInput
-              label='Cita'
+              label='Cita:'
               name='quote'
               type='text'
               placeholder='Habacuc 3:1-4'
             />
-              <button type='submit'>Publicar</button>
+              <button type="submit">Submit</button>
             </div>
             <div className='screen'>
+              <h1 className='header'>Introducción</h1>
               <TextArea
-              label='Introducción:'
+              label='Contenido:'
               name='introduction'
               placeholder='¿Quién tiene sed?'
             />
             </div>
             <div className='screen'>
+              <h1 className='header'>Extra para el guía de familia</h1>
               <TextArea
-              label='Extra para el guía de familia:'
+              label='Contenido:'
               name='extra'
               placeholder='¿Cómo provocamos un avivamiento en casa?'
             />
             </div>
             <div className='screen'>
-              <h1 className='font-nunito text-xl font-bold'>Extra | sección 1</h1>
+              <h1 className='header'>Extra | sección 1</h1>
               <TextInput
               label='Título:'
               name='sectionOneTitle'
@@ -144,7 +146,7 @@ const Creator = ({ setValues }: {setValues: Dispatch<SetStateAction<Values>>}) =
               />
             </div>
             <div className='screen'>
-              <h1 className='font-nunito text-xl font-bold'>Extra | Sección 2</h1>
+              <h1 className='header'>Extra | Sección 2</h1>
               <TextInput
               label='Título:'
               name='sectionTwoTitle'
@@ -164,7 +166,7 @@ const Creator = ({ setValues }: {setValues: Dispatch<SetStateAction<Values>>}) =
               />
             </div>
             <div className='screen'>
-              <h1 className='font-nunito text-xl font-bold'>Extra | Sección 3</h1>
+              <h1 className='header'>Extra | Sección 3</h1>
               <TextInput
               label='Título:'
               name='sectionThreeTitle'
@@ -184,8 +186,9 @@ const Creator = ({ setValues }: {setValues: Dispatch<SetStateAction<Values>>}) =
               />
             </div>
             <div className='screen'>
+              <h1 className='header'>Conclusión</h1>
               <TextArea
-              label='Conclusión'
+              label='Contenido:'
               name='conclusion'
               placeholder='Conclusión'
             />

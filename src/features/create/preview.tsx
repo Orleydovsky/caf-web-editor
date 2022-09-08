@@ -6,7 +6,7 @@ import Section from './section'
 
 const Preview = ({ values }: {values: Values}) => {
   return (
-    <div className='w-1/2'>
+    <div className='w-1/2 px-2'>
       <div className='w-96'>
         <Cover title={values.title} serie={values.serie} topic={values.topic} quote={values.quote}/>
         <Section title='Introducción' content={values.introduction} />

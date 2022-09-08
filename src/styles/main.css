@@ -3,3 +3,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .screen {
+    @apply w-full h-screen rounded-xl shadow-md mb-5 bg-gray-100 p-5
+  }
+  .light-card {
+    @apply bg-white rounded-xl p-5 shadow-md mb-5 
+  }
+  .dark-card {
+    @apply bg-cyan-900 rounded-xl p-5 shadow-md mb-5 text-white
+  }
+  .header {
+    @apply  text-2xl font-nunito font-semibold
+  }
+  .primary-button {
+    @apply  border-cyan-600 text-cyan-600 w-full border-4 bottom-0 shadow-md py-2 rounded-lg font-nunito font-bold px-4 hover:bg-cyan-600 hover:text-white
+  }
+}

@@ -4,8 +4,8 @@ interface Props {
   relevantQuote?: string
 }
 const Section = ({ content, title, relevantQuote }: Props) => {
-  return <div className='w-full rounded-xl border-2 p-5 bg-gradient-to-r from-cyan-600 to-cyan-700 h-screen'>
-    <div className='text-white font-semibold font-nunito mb-5'>
+  return <div className='screen bg-gradient-to-r from-cyan-500 to-cyan-600 h-screen'>
+    <div className='text-white font-semibold font-nunito mb-5 text-center'>
       <h2 className='text-3xl '>{title}</h2>
       <h3>{relevantQuote}</h3>
     </div>
