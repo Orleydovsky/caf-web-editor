@@ -107,7 +107,6 @@ const Creator = ({ setValues }: {setValues: Dispatch<SetStateAction<Values>>}) =
               type='text'
               placeholder='Habacuc 3:1-4'
             />
-              <button type="submit">Submit</button>
             </div>
             <div className='screen'>
               <h1 className='header'>Introducción</h1>
@@ -185,13 +184,18 @@ const Creator = ({ setValues }: {setValues: Dispatch<SetStateAction<Values>>}) =
                 placeholder='Contenido'
               />
             </div>
-            <div className='screen'>
-              <h1 className='header'>Conclusión</h1>
-              <TextArea
-              label='Contenido:'
-              name='conclusion'
-              placeholder='Conclusión'
-            />
+            <div className='screen relative p-0'>
+              <div className='p-5'>
+                <h1 className='header'>Conclusión</h1>
+                <TextArea
+                  label='Contenido:'
+                  name='conclusion'
+                  placeholder='Conclusión'
+                />
+              </div>
+              <div className='w-full absolute bottom-5 flex justify-center'>
+                <button type='submit' className='primary-button w-5/6'>Crear nueva C.A.F.</button>
+              </div>
             </div>
           </Form>
         </Formik>
