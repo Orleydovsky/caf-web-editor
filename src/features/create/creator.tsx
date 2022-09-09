@@ -53,7 +53,24 @@ const Creator = ({ setValues }: {setValues: Dispatch<SetStateAction<Values>>}) =
     <div className='w-1/2 flex justify-end px-2'>
       <div className='w-96'>
         <Formik
-         initialValues={{ initialValues }}
+         initialValues={{
+           title: '',
+           serie: '',
+           topic: Number(''),
+           quote: '',
+           introduction: '',
+           extra: '',
+           sectionOneTitle: '',
+           sectionOneQuote: '',
+           sectionOneContent: '',
+           sectionTwoTitle: '',
+           sectionTwoQuote: '',
+           sectionTwoContent: '',
+           sectionThreeTitle: '',
+           sectionThreeQuote: '',
+           sectionThreeContent: '',
+           conclusion: ''
+         }}
          validationSchema={yup.object({
            title: yup.string().required('Se requiere un título'),
            serie: yup.string().required('Especificar la serie'),
