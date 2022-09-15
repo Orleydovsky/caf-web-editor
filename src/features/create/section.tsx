@@ -10,8 +10,8 @@ const Section = ({ content, title, relevantQuote }: Props) => {
       <h3>{relevantQuote}</h3>
     </div>
     {content !== undefined
-      ? content.split('-').length > 1
-        ? content.split('-').slice(1).map((content, index) => {
+      ? content.split('#').length > 1
+        ? content.split('#').slice(1).map((content, index) => {
           return <div key={index} className={index % 2 === 0 ? 'light-card' : 'dark-card'}>
             {content}
           </div>
